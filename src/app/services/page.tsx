@@ -23,8 +23,8 @@ export default function ServicesPage() {
           <div className="inline-block bg-accent/20 border border-accent/50 px-6 py-2.5 rounded-full mb-6 backdrop-blur-md shadow-lg shadow-accent/10">
             <span className="text-white font-bold tracking-[0.25em] text-sm md:text-base uppercase drop-shadow-md">Comprehensive Solutions</span>
           </div>
-          <h1 className="text-5xl md:text-7xl font-serif font-black mb-6 text-white drop-shadow-2xl leading-[1.05] tracking-tight">
-            Our <span className="text-accent italic font-light">Services</span>
+          <h1 className="text-5xl md:text-7xl font-extrabold mb-6 text-white drop-shadow-2xl leading-[1.05] tracking-tight">
+            Corporate <span className="text-accent">Services Portfolio</span>
           </h1>
           <p className="text-lg md:text-xl text-gray-200 font-light leading-relaxed drop-shadow-md max-w-2xl mx-auto">
             From meticulous bookkeeping to high-level strategic advisory, explore our full suite of professional services tailored to elevate your enterprise.
@@ -36,51 +36,74 @@ export default function ServicesPage() {
       <section className="py-24 px-4 bg-gray-50 relative overflow-hidden flex-1">
         <div className="container mx-auto max-w-7xl relative z-20">
           <div className="text-center mb-20">
-            <span className="text-accent font-bold uppercase tracking-wider text-sm mb-3 block">Our Expertise</span>
-            <h2 className="text-primary text-4xl md:text-5xl font-black mb-6 tracking-tight">How We Can Help You</h2>
+            <span className="text-accent font-bold uppercase tracking-wider text-sm mb-3 block">Core Competencies</span>
+            <h2 className="text-primary text-4xl md:text-5xl font-extrabold mb-6 tracking-tight">Strategic Financial Advantages</h2>
             <div className="h-1.5 w-20 bg-accent mx-auto mb-6 rounded-full"></div>
-            <p className="text-gray-600 text-lg font-medium max-w-2xl mx-auto">
-              Explore our comprehensive suite of professional services tailored to elevate your enterprise. We bring meticulous attention to every aspect of your business.
+            <p className="text-gray-600 text-xl font-medium max-w-3xl mx-auto leading-relaxed">
+              We engineer comprehensive financial strategies specifically tailored to elevate enterprise operations. Our firm leverages state-of-the-art cloud architecture and elite accounting personnel to provide unprecedented oversight over your corporate infrastructure.
             </p>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+          <div className="flex flex-col gap-24">
             {services.map((service, index) => (
               <div 
                 key={index} 
-                className="group bg-white border border-gray-100 rounded-3xl p-8 md:p-10 hover:shadow-[0_20px_40px_-15px_rgba(0,0,0,0.1)] hover:border-accent/30 transition-all duration-500 relative flex flex-col overflow-hidden"
+                className={`flex flex-col ${index % 2 !== 0 ? 'lg:flex-row-reverse' : 'lg:flex-row'} items-center gap-10 lg:gap-16 group relative`}
               >
-                {/* Subtle top border accent on hover */}
-                <div className="absolute top-0 left-0 w-full h-1.5 bg-gradient-to-r from-accent to-accent/50 opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
-                
-                {/* Decorative background element */}
-                <div className="absolute -right-12 -top-12 w-40 h-40 bg-accent/5 rounded-full group-hover:scale-[1.3] group-hover:bg-accent/10 transition-all duration-700 ease-in-out z-0"></div>
-                
-                <div className="relative z-10 w-16 h-16 rounded-2xl bg-gray-50 flex items-center justify-center text-primary mb-8 group-hover:bg-accent group-hover:text-white transition-all duration-500 shadow-[0_4px_20px_-5px_rgba(0,0,0,0.05)] group-hover:shadow-accent/40 group-hover:-translate-y-1">
-                  {service.icon}
+                {/* Image Side */}
+                <div className="w-full lg:w-1/2 relative z-10">
+                  <div className="relative aspect-[4/3] rounded-3xl overflow-hidden shadow-xl group-hover:shadow-2xl transition-shadow duration-700">
+                    <div 
+                      className="absolute inset-0 w-full h-full bg-cover bg-center transform group-hover:scale-105 transition-transform duration-1000 ease-in-out"
+                      style={{ backgroundImage: `url('${service.image}')` }}
+                    ></div>
+                    <div className="absolute inset-0 bg-gradient-to-t from-primary-dark/90 via-transparent to-transparent opacity-80"></div>
+                    
+                    <div className="absolute bottom-6 left-6 w-16 h-16 rounded-2xl bg-accent/90 backdrop-blur-md flex items-center justify-center text-white shadow-xl transform origin-bottom-left group-hover:scale-110 transition-transform duration-500">
+                      {service.icon}
+                    </div>
+                  </div>
+                  
+                  {/* Decorative background element behind image */}
+                  <div className={`absolute -z-10 w-full h-full rounded-3xl bg-accent/10 top-6 ${index % 2 !== 0 ? '-left-6' : '-right-6'} transform group-hover:translate-x-2 transition-transform duration-700`}></div>
                 </div>
-                
-                <h3 className="relative z-10 text-2xl font-extrabold text-gray-900 mb-4 group-hover:text-primary transition-colors">
-                  {service.title}
-                </h3>
-                
-                <p className="relative z-10 text-gray-600 leading-relaxed font-medium flex-grow mb-6">
-                  {service.description}
-                </p>
-                
-                <div className="relative z-10 mt-auto pt-4 border-t border-gray-100/50 group-hover:border-accent/20 transition-colors">
-                  <Link 
-                    href={`/services/${service.slug}`}
-                    className="inline-flex items-center gap-2 text-primary font-bold hover:text-accent transition-colors py-2"
-                  >
-                    View Details
-                    <ArrowRight size={18} className="group-hover:translate-x-1 transition-transform" />
-                  </Link>
+
+                {/* Content Side */}
+                <div className="w-full lg:w-1/2 flex flex-col justify-center relative z-10">
+                  <div className="inline-flex items-center gap-4 mb-4">
+                    <span className="text-accent font-black text-2xl lg:text-3xl opacity-40 font-serif tracking-widest">
+                       {String(index + 1).padStart(2, '0')}.
+                    </span>
+                    <div className="h-[2px] w-12 bg-accent/40"></div>
+                  </div>
+                  
+                  <h3 className="text-3xl lg:text-4xl font-black text-primary mb-6 group-hover:text-accent transition-colors duration-500 tracking-tight leading-tight">
+                    {service.title}
+                  </h3>
+                  
+                  <p className="text-gray-600 text-lg md:text-xl font-medium leading-relaxed mb-10 max-w-xl">
+                    {service.description}
+                  </p>
+                  
+                  <div>
+                    <Link 
+                      href={`/services/${service.slug}`}
+                      className="inline-flex items-center gap-4 text-primary font-bold hover:text-accent transition-colors text-lg group/btn"
+                    >
+                      <span className="relative">
+                        Explore This Service
+                        <span className="absolute -bottom-1.5 left-0 w-0 h-0.5 bg-accent transition-all duration-300 group-hover/btn:w-full"></span>
+                      </span>
+                      <div className="w-12 h-12 rounded-full bg-white shadow-md flex items-center justify-center group-hover/btn:bg-accent group-hover/btn:text-white transition-colors duration-300 border border-gray-100">
+                        <ArrowRight size={20} />
+                      </div>
+                    </Link>
+                  </div>
                 </div>
-                
-                {/* Number Watermark */}
-                <div className="absolute -bottom-6 -right-6 text-9xl font-black text-gray-50 opacity-0 group-hover:opacity-100 group-hover:text-accent/[0.03] transition-all duration-500 select-none z-0">
-                  {String(index + 1).padStart(2, '0')}
+
+                {/* Faint Background Number for depth */}
+                <div className={`absolute pointer-events-none top-1/2 -translate-y-1/2 ${index % 2 !== 0 ? '-right-20' : '-left-20'} text-[250px] font-black text-gray-900 opacity-[0.02] z-0 select-none`}>
+                  {index + 1}
                 </div>
               </div>
             ))}

@@ -36,7 +36,7 @@ export default function Home() {
         {heroImages.map((img, index) => (
           <div 
             key={index}
-            className={`absolute inset-0 z-0 bg-cover bg-top ${index === currentImageIndex ? 'opacity-100' : 'opacity-0'}`}
+            className={`absolute inset-0 z-0 bg-cover bg-top transition-opacity duration-[1500ms] ease-in-out ${index === currentImageIndex ? 'opacity-100 z-10' : 'opacity-0 z-0'}`}
             style={{ backgroundImage: `url('${img}')` }}
           ></div>
         ))}
@@ -45,21 +45,21 @@ export default function Home() {
         <div className="absolute inset-0 z-10 bg-black/50"></div>
 
         {/* Left/Right controls */}
-        <button onClick={prevImage} className="absolute left-3 md:left-8 z-20 text-white drop-shadow-[0_0_10px_rgba(0,0,0,0.8)] hover:text-accent transition-colors">
-          <ChevronLeft size={60} strokeWidth={1.5} />
+        <button onClick={prevImage} className="absolute left-2 sm:left-4 md:left-8 z-20 text-white drop-shadow-[0_0_10px_rgba(0,0,0,0.8)] hover:text-accent transition-colors">
+          <ChevronLeft className="w-10 h-10 md:w-16 md:h-16" strokeWidth={1.5} />
         </button>
-        <button onClick={nextImage} className="absolute right-3 md:right-8 z-20 text-white drop-shadow-[0_0_10px_rgba(0,0,0,0.8)] hover:text-accent transition-colors">
-          <ChevronRight size={60} strokeWidth={1.5} />
+        <button onClick={nextImage} className="absolute right-2 sm:right-4 md:right-8 z-20 text-white drop-shadow-[0_0_10px_rgba(0,0,0,0.8)] hover:text-accent transition-colors">
+          <ChevronRight className="w-10 h-10 md:w-16 md:h-16" strokeWidth={1.5} />
         </button>
         
         <div className="container mx-auto px-4 relative z-20 flex flex-col items-center text-center mt-12 max-w-5xl">
           <div className="inline-block bg-accent/20 border border-accent/50 px-4 py-1.5 rounded-full mb-6 backdrop-blur-sm">
             <span className="text-accent font-bold tracking-wider text-sm uppercase drop-shadow-md">Empowering Your Financial Future</span>
           </div>
-          <h1 className="text-5xl md:text-7xl font-extrabold mb-6 max-w-5xl leading-[1.15] text-white drop-shadow-lg">
+          <h1 className="text-4xl sm:text-5xl md:text-7xl font-extrabold mb-6 max-w-5xl leading-[1.15] text-white drop-shadow-lg">
             Precision Accounting For <span className="text-accent">Modern Business</span>
           </h1>
-          <p className="text-xl md:text-2xl mb-10 max-w-3xl text-gray-200 font-medium drop-shadow-md">
+          <p className="text-lg sm:text-xl md:text-2xl mb-10 max-w-3xl text-gray-200 font-medium drop-shadow-md px-2">
             Expert financial management, tax strategies, and bookkeeping from Vigilant Accounting Services, designed to help your enterprise scale efficiently with expert oversight over your vigilant accounts.
           </p>
           <div className="flex flex-col sm:flex-row gap-5">

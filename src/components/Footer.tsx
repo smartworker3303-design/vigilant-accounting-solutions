@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { Facebook, Twitter, Linkedin, MapPin, Phone, Mail } from "lucide-react";
+import { Linkedin, Phone, Mail } from "lucide-react";
 
 export default function Footer() {
   return (
@@ -13,13 +13,7 @@ export default function Footer() {
             Transforming accounting from a compliance necessity into a strategic advantage for your business.
           </p>
           <div className="flex gap-4 mt-2">
-            <a href="#" className="w-10 h-10 rounded-md bg-white/5 flex items-center justify-center hover:bg-accent transition-colors">
-              <Facebook size={18} />
-            </a>
-            <a href="#" className="w-10 h-10 rounded-md bg-white/5 flex items-center justify-center hover:bg-accent transition-colors">
-              <Twitter size={18} />
-            </a>
-            <a href="#" className="w-10 h-10 rounded-md bg-white/5 flex items-center justify-center hover:bg-accent transition-colors">
+            <a href="https://www.linkedin.com/company/113085087/" target="_blank" rel="noopener noreferrer" className="w-10 h-10 rounded-md bg-white/5 flex items-center justify-center hover:bg-[#0A66C2] hover:text-white transition-colors" aria-label="Visit our LinkedIn page">
               <Linkedin size={18} />
             </a>
           </div>
