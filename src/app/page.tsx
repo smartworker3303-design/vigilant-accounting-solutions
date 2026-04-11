@@ -60,7 +60,7 @@ export default function Home() {
             Precision Accounting For <span className="text-accent">Modern Business</span>
           </h1>
           <p className="text-xl md:text-2xl mb-10 max-w-3xl text-gray-200 font-medium drop-shadow-md">
-            Expert financial management, tax strategies, and bookkeeping services designed to help your enterprise scale efficiently with vigilant oversight.
+            Expert financial management, tax strategies, and bookkeeping from Vigilant Accounting Services, designed to help your enterprise scale efficiently with expert oversight over your vigilant accounts.
           </p>
           <div className="flex flex-col sm:flex-row gap-5">
             <Link href="/services" className="bg-accent text-white px-9 py-4 rounded-md font-bold text-lg hover:bg-accent-hover transition-all flex items-center justify-center gap-2 shadow-lg shadow-accent/30">
@@ -94,10 +94,10 @@ export default function Home() {
           <h2 className="text-primary text-4xl md:text-5xl font-extrabold mb-6">Welcome to Vigilant Accounting Solutions</h2>
           <div className="h-1.5 w-24 bg-accent mx-auto mb-10 rounded-full shadow-md"></div>
           <p className="text-gray-900 text-xl leading-relaxed font-medium">
-            We are a leading accounting firm committed to delivering comprehensive financial solutions tailored to the needs of modern businesses. 
-            Our services range from precise bookkeeping and financial management to strategic corporate tax planning and advisory. 
+            We are a leading Vigilant accounting firm committed to delivering comprehensive financial solutions tailored to the needs of modern businesses. 
+            Our Vigilant Accounting services range from precise bookkeeping and financial management to strategic corporate tax planning and advisory. 
             Backed by a team of experienced professionals, we operate as a trusted extension of your organization—ensuring full 
-            regulatory compliance, optimizing financial performance, and supporting sustainable business growth.
+            regulatory compliance, optimizing financial performance, and maintaining your Vigilant Accounts for sustainable business growth.
           </p>
         </div>
       </section>
@@ -195,10 +195,10 @@ export default function Home() {
         <div className="container mx-auto max-w-7xl flex flex-col lg:flex-row gap-16 items-center">
           <div className="flex-1 lg:pr-8">
             <span className="text-accent font-bold uppercase tracking-wider text-sm mb-3 block">Why Choose Us</span>
-            <h2 className="text-primary text-4xl md:text-5xl font-extrabold mb-6 leading-tight">Why Vigilant Accounting Solutions?</h2>
+            <h2 className="text-primary text-4xl md:text-5xl font-extrabold mb-6 leading-tight">Why Choose Vigilant Accounting Services?</h2>
             <div className="h-1.5 w-20 bg-accent mb-8 rounded-full"></div>
             <p className="text-gray-900 mb-10 text-xl font-medium leading-relaxed">
-              We don't just crunch numbers; we interpret them. Our vigilant approach means we are always looking out for your bottom line. We use modern cloud-based technologies to provide seamless, real-time insights into your business metrics.
+              We don't just crunch numbers; we interpret them. Our highly vigilant approach means we are always looking out for your bottom line. We use modern cloud-based technologies to provide seamless, real-time insights into your business metrics.
             </p>
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
               <div className="flex items-start gap-4 p-4 rounded-xl hover:bg-gray-50 transition-colors">

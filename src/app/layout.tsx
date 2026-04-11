@@ -7,7 +7,7 @@ export const metadata: Metadata = {
     template: "%s | Vigilant Accounting Solutions"
   },
   description: "Vigilant Accounting Solutions is a premier accounting service providing expert bookkeeping, corporate tax preparation, and CFO services for modern businesses.",
-  keywords: ["Vigilant Accounting Solutions", "accounting service", "top accounting service", "bookkeeping", "tax preparation", "CFO services", "financial management", "accountant", "corporate tax"],
+  keywords: ["Vigilant Accounting Solutions", "Vigilant Accounting", "Vigilant Accounts", "Vigilant", "Vigilant Accounting Services", "top accounting service", "bookkeeping", "tax preparation", "CFO services", "financial management", "accountant", "corporate tax"],
   openGraph: {
     title: "Vigilant Accounting Solutions | Top Accounting Service",
     description: "Vigilant Accounting Solutions is a premier accounting service providing expert bookkeeping, corporate tax preparation, and CFO services for modern businesses.",
@@ -29,6 +29,15 @@ export const metadata: Metadata = {
   },
   alternates: {
     canonical: "https://vasbpo.net",
+  },
+  icons: {
+    icon: "/icon.jpg",
+    shortcut: "/icon.jpg",
+    apple: "/icon.jpg",
+    other: {
+      rel: 'apple-touch-icon-precomposed',
+      url: '/icon.jpg',
+    },
   }
 };
 
@@ -41,6 +50,7 @@ export default function RootLayout({
     "@context": "https://schema.org",
     "@type": "AccountingService",
     "name": "Vigilant Accounting Solutions",
+    "alternateName": ["Vigilant Accounting", "Vigilant Accounting Services", "Vigilant Accounts", "Vigilant"],
     "image": "https://vasbpo.net/icon.jpg",
     "@id": "https://vasbpo.net",
     "url": "https://vasbpo.net",
