@@ -49,23 +49,18 @@ export default function Footer() {
         <div>
           <h3 className="text-lg font-bold mb-6 text-white">Contact Info</h3>
           <div className="flex flex-col gap-5 text-gray-400">
-            <div className="flex gap-4">
-              <div className="bg-white/10 p-2 text-accent rounded-md h-fit">
-                <MapPin size={20} />
-              </div>
-              <p>123 Financial District,<br/>Suite 500,<br/>New York, NY 10004</p>
-            </div>
+
             <div className="flex items-center gap-4">
               <div className="bg-white/10 p-2 text-accent rounded-md">
                 <Phone size={20} />
               </div>
-              <p>+1 (234) 567-8900</p>
+              <p>(601) 493-9816</p>
             </div>
             <div className="flex items-center gap-4">
                <div className="bg-white/10 p-2 text-accent rounded-md">
                 <Mail size={20} />
               </div>
-              <p>info@vigilantaccounting.com</p>
+              <p>infovasbpo@gmail.com</p>
             </div>
           </div>
         </div>

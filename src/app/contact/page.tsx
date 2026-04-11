@@ -100,19 +100,7 @@ export default function ContactPage() {
                 </p>
 
                 <div className="space-y-10">
-                  <div className="flex items-start gap-6 group">
-                    <div className="w-14 h-14 bg-white/10 rounded-2xl flex items-center justify-center text-accent group-hover:bg-accent group-hover:text-white transition-colors duration-300 shrink-0">
-                      <MapPin size={24} />
-                    </div>
-                    <div>
-                      <h4 className="text-xl font-bold mb-2">Our Office</h4>
-                      <p className="text-gray-300 leading-relaxed font-light">
-                        123 Financial District Ave<br />
-                        Suite 400<br />
-                        New York, NY 10004
-                      </p>
-                    </div>
-                  </div>
+
 
                   <div className="flex items-start gap-6 group">
                     <div className="w-14 h-14 bg-white/10 rounded-2xl flex items-center justify-center text-accent group-hover:bg-accent group-hover:text-white transition-colors duration-300 shrink-0">
@@ -121,7 +109,7 @@ export default function ContactPage() {
                     <div>
                       <h4 className="text-xl font-bold mb-2">Call Us</h4>
                       <p className="text-gray-300 leading-relaxed font-light">
-                        +1 (800) 555-0199<br />
+                        (601) 493-9816<br />
                         Mon-Fri, 9am to 6pm EST
                       </p>
                     </div>
@@ -134,8 +122,7 @@ export default function ContactPage() {
                     <div>
                       <h4 className="text-xl font-bold mb-2">Email Us</h4>
                       <p className="text-gray-300 leading-relaxed font-light">
-                        inquiries@vigilantaccounting.com<br />
-                        support@vigilantaccounting.com
+                        infovasbpo@gmail.com
                       </p>
                     </div>
                   </div>
