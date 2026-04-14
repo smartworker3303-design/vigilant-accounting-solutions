@@ -31,12 +31,17 @@ export const metadata: Metadata = {
     canonical: "https://vasbpo.net",
   },
   icons: {
-    icon: "/icon.jpg",
-    shortcut: "/icon.jpg",
-    apple: "/icon.jpg",
+    icon: [
+      { url: '/icon.png', type: 'image/png', sizes: '192x192' },
+      { url: '/icon.png', type: 'image/png' },
+    ],
+    shortcut: '/icon.png',
+    apple: [
+      { url: '/apple-icon.png', sizes: '180x180', type: 'image/png' },
+    ],
     other: {
       rel: 'apple-touch-icon-precomposed',
-      url: '/icon.jpg',
+      url: '/apple-icon.png',
     },
   }
 };
@@ -51,7 +56,8 @@ export default function RootLayout({
     "@type": "AccountingService",
     "name": "Vigilant Accounting Solutions",
     "alternateName": ["Vigilant Accounting", "Vigilant Accounting Services", "Vigilant Accounts", "Vigilant"],
-    "image": "https://vasbpo.net/icon.jpg",
+    "image": "https://vasbpo.net/icon.png",
+    "logo": "https://vasbpo.net/icon.png",
     "@id": "https://vasbpo.net",
     "url": "https://vasbpo.net",
     "description": "Vigilant Accounting Solutions is a premier accounting service providing expert bookkeeping, corporate tax preparation, and CFO services for modern businesses.",

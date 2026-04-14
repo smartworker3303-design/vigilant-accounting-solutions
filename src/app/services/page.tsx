@@ -9,8 +9,27 @@ import { ArrowRight } from "lucide-react";
 export default function ServicesPage() {
   // Grid layout does not require open/close state
 
+  const jsonLd = {
+    "@context": "https://schema.org",
+    "@type": "ItemList",
+    "itemListElement": services.map((service, index) => ({
+      "@type": "ListItem",
+      "position": index + 1,
+      "item": {
+        "@type": "Service",
+        "name": service.title,
+        "description": service.description,
+        "url": `https://vasbpo.net/services/${service.slug}`
+      }
+    }))
+  };
+
   return (
     <div className="flex flex-col min-h-screen">
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+      />
       <Header />
       
       {/* Hero Section */}

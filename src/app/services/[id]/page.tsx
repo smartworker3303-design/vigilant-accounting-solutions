@@ -1,5 +1,6 @@
 import React from "react";
 import { notFound } from "next/navigation";
+import type { Metadata } from "next";
 import Link from "next/link";
 import Header from "../../../components/Header";
 import Footer from "../../../components/Footer";
@@ -11,6 +12,40 @@ export async function generateStaticParams() {
   return services.map((service) => ({
     id: service.slug,
   }));
+}
+
+export async function generateMetadata({ params }: { params: Promise<{ id: string }> }): Promise<Metadata> {
+  const resolvedParams = await params;
+  const service = services.find((s) => s.slug === resolvedParams.id);
+  
+  if (!service) {
+    return {
+      title: 'Service Not Found | Vigilant Accounting Solutions',
+    };
+  }
+
+  return {
+    title: `${service.title} | Vigilant Accounting Solutions`,
+    description: service.description,
+    keywords: [service.title, "Accounting Service", ...service.features, "Vigilant Accounting Solutions"],
+    openGraph: {
+      title: `${service.title} | Vigilant Accounting Solutions`,
+      description: service.description,
+      url: `https://vasbpo.net/services/${service.slug}`,
+      images: [
+        {
+          url: service.image,
+          width: 1200,
+          height: 800,
+          alt: service.title,
+        }
+      ],
+      type: "article",
+    },
+    alternates: {
+      canonical: `https://vasbpo.net/services/${service.slug}`,
+    }
+  };
 }
 
 export default async function ServiceDetails({ params }: { params: Promise<{ id: string }> }) {
@@ -25,8 +60,39 @@ export default async function ServiceDetails({ params }: { params: Promise<{ id:
   const currentIndex = services.findIndex(s => s.slug === resolvedParams.id);
   const nextService = services[(currentIndex + 1) % services.length];
 
+  const jsonLd = {
+    "@context": "https://schema.org",
+    "@type": "Service",
+    "name": service.title,
+    "description": service.description,
+    "provider": {
+      "@type": "AccountingService",
+      "name": "Vigilant Accounting Solutions",
+      "image": "https://vasbpo.net/icon.png",
+      "url": "https://vasbpo.net"
+    },
+    "hasOfferCatalog": {
+      "@type": "OfferCatalog",
+      "name": "Service Features",
+      "itemListElement": service.features.map((feature, index) => ({
+        "@type": "Offer",
+        "itemOffered": {
+          "@type": "Service",
+          "name": feature
+        },
+        "position": index + 1
+      }))
+    },
+    "image": service.image,
+    "url": `https://vasbpo.net/services/${service.slug}`
+  };
+
   return (
     <div className="flex flex-col min-h-screen bg-gray-50">
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+      />
       <Header />
 
       {/* Hero Section */}
