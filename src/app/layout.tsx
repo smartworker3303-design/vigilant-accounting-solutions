@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import "./globals.css";
 
 export const metadata: Metadata = {
+  metadataBase: new URL('https://vasbpo.net'),
   title: {
     default: "Vigilant Accounting Solutions | Top Accounting Service",
     template: "%s | Vigilant Accounting Solutions"
@@ -33,7 +34,6 @@ export const metadata: Metadata = {
   icons: {
     icon: [
       { url: '/icon.png', type: 'image/png', sizes: '192x192' },
-      { url: '/icon.png', type: 'image/png' },
     ],
     shortcut: '/icon.png',
     apple: [
