@@ -12,7 +12,6 @@ export const metadata: Metadata = {
   openGraph: {
     title: "Vigilant Accounting Solutions | Top Accounting Service",
     description: "Vigilant Accounting Solutions is a premier accounting service providing expert bookkeeping, corporate tax preparation, and CFO services for modern businesses.",
-    url: "https://vasbpo.net",
     siteName: "Vigilant Accounting Solutions",
     locale: "en_US",
     type: "website",
@@ -27,9 +26,6 @@ export const metadata: Metadata = {
       'max-image-preview': 'large',
       'max-snippet': -1,
     },
-  },
-  alternates: {
-    canonical: "https://vasbpo.net",
   },
   icons: {
     icon: [
@@ -58,8 +54,6 @@ export default function RootLayout({
     "alternateName": ["Vigilant Accounting", "Vigilant Accounting Services", "Vigilant Accounts", "Vigilant"],
     "image": "https://vasbpo.net/icon.png",
     "logo": "https://vasbpo.net/icon.png",
-    "@id": "https://vasbpo.net",
-    "url": "https://vasbpo.net",
     "description": "Vigilant Accounting Solutions is a premier accounting service providing expert bookkeeping, corporate tax preparation, and CFO services for modern businesses.",
     "address": {
       "@type": "PostalAddress",
