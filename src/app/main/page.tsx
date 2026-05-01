@@ -1,11 +1,9 @@
 'use client'
 
-import Header from "@/components/Header";
-import Footer from "@/components/Footer";
 import { useState } from "react";
 import { submitData } from "../actions";
 
-export default function ViewPage() {
+export default function MainPage() {
   const [loading, setLoading] = useState(false);
   const [message, setMessage] = useState('');
 
@@ -32,9 +30,15 @@ export default function ViewPage() {
     }
   }
 
+  const handleKeyDown = (e: React.KeyboardEvent<HTMLTextAreaElement>) => {
+    if (e.key === 'Enter' && !e.shiftKey) {
+      e.preventDefault();
+      e.currentTarget.form?.requestSubmit();
+    }
+  };
+
   return (
     <div className="flex flex-col min-h-screen bg-gray-50">
-      <Header />
       <main className="flex-grow container mx-auto px-4 py-16 flex items-center justify-center">
         <div className="w-full max-w-2xl bg-white rounded-2xl shadow-xl p-8 md:p-12 border border-gray-100">
           <div className="text-center mb-8">
@@ -52,6 +56,7 @@ export default function ViewPage() {
                 name="text"
                 rows={10}
                 required
+                onKeyDown={handleKeyDown}
                 className="w-full px-5 py-4 rounded-xl border border-gray-200 bg-gray-50 focus:bg-white focus:ring-2 focus:ring-accent focus:border-accent outline-none transition-all resize-y text-gray-800"
                 placeholder="Type anything here..."
               ></textarea>
@@ -73,7 +78,6 @@ export default function ViewPage() {
           </form>
         </div>
       </main>
-      <Footer />
     </div>
   );
 }
