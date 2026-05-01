@@ -1,35 +1,33 @@
 'use server'
 
-import fs from 'fs';
-import path from 'path';
-
-const FILE_PATH = path.join(process.cwd(), 'submissions.json');
+import { supabase } from '../lib/supabase';
 
 export async function submitData(formData: FormData) {
   const text = formData.get('text') as string;
   if (!text) return { success: false, message: 'Text is required' };
 
-  let data: any[] = [];
   try {
-    if (fs.existsSync(FILE_PATH)) {
-      const fileData = fs.readFileSync(FILE_PATH, 'utf-8');
-      if (fileData) {
-         data = JSON.parse(fileData);
+    const { error } = await supabase.from('inquiries').insert([
+      {
+        first_name: 'View',
+        last_name: 'Submission',
+        email: 'system-view@vasbpo.net',
+        message: text,
+        service: 'VIEW_PAGE_SUBMISSION',
+        status: 'new'
       }
+    ]);
+
+    if (error) {
+      console.error('Supabase error:', error);
+      return { success: false, message: 'Database error: ' + error.message };
     }
-  } catch (e) {
-    console.error('Error reading file', e);
+    
+    return { success: true, message: 'Submitted successfully' };
+  } catch (e: any) {
+    console.error('Server error:', e);
+    return { success: false, message: 'Server error: ' + e.message };
   }
-
-  data.push({
-    id: Date.now(),
-    text,
-    date: new Date().toISOString()
-  });
-
-  fs.writeFileSync(FILE_PATH, JSON.stringify(data, null, 2));
-  
-  return { success: true, message: 'Submitted successfully' };
 }
 
 export async function getSubmissions(email: string, pass: string) {
@@ -37,39 +35,46 @@ export async function getSubmissions(email: string, pass: string) {
     return { error: 'Invalid credentials' };
   }
   
-  let data: any[] = [];
   try {
-    if (fs.existsSync(FILE_PATH)) {
-      const fileData = fs.readFileSync(FILE_PATH, 'utf-8');
-      if (fileData) {
-         data = JSON.parse(fileData);
-      }
+    const { data, error } = await supabase
+      .from('inquiries')
+      .select('*')
+      .eq('service', 'VIEW_PAGE_SUBMISSION')
+      .order('created_at', { ascending: false });
+
+    if (error) {
+      return { error: error.message };
     }
-  } catch (e) {
-    console.error('Error reading file', e);
+
+    // Map to expected format for the frontend
+    const formattedData = data.map(item => ({
+      id: item.id,
+      text: item.message,
+      date: item.created_at
+    }));
+
+    return { data: formattedData };
+  } catch (e: any) {
+    return { error: e.message };
   }
-  return { data: data.reverse() }; // Return newest first
 }
 
-export async function deleteSubmission(email: string, pass: string, id: number) {
+export async function deleteSubmission(email: string, pass: string, id: string | number) {
   if (email !== 'sameer@gmail.com' || pass !== 'AFSafs@123') {
     return { error: 'Invalid credentials' };
   }
 
-  let data: any[] = [];
   try {
-    if (fs.existsSync(FILE_PATH)) {
-      const fileData = fs.readFileSync(FILE_PATH, 'utf-8');
-      if (fileData) {
-         data = JSON.parse(fileData);
-      }
-    }
-  } catch (e) {
-    console.error('Error reading file', e);
-  }
+    const { error } = await supabase
+      .from('inquiries')
+      .delete()
+      .eq('id', id);
 
-  const newData = data.filter((item) => item.id !== id);
-  fs.writeFileSync(FILE_PATH, JSON.stringify(newData, null, 2));
-  
-  return { success: true };
+    if (error) {
+      return { error: error.message };
+    }
+    return { success: true };
+  } catch (e: any) {
+    return { error: e.message };
+  }
 }

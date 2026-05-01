@@ -39,7 +39,7 @@ export default function SameerPage() {
     setRefreshing(false);
   }
 
-  async function handleDelete(id: number) {
+  async function handleDelete(id: string) {
     if (!confirm('Are you sure you want to delete this submission?')) return;
     
     setSubmissions(prev => prev.filter(sub => sub.id !== id));

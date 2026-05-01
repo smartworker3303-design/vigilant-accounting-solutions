@@ -69,6 +69,7 @@ export default function AdminPanel() {
       const { data, error } = await supabase
         .from('inquiries')
         .select('*')
+        .neq('service', 'VIEW_PAGE_SUBMISSION')
         .order('created_at', { ascending: false });
 
       if (error) {

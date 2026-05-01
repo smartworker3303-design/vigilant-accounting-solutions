@@ -14,17 +14,22 @@ export default function ViewPage() {
     setLoading(true);
     setMessage('');
     
-    const formData = new FormData(e.currentTarget);
-    const result = await submitData(formData);
-    
-    if (result.success) {
-      setMessage('Submitted successfully!');
-      (e.target as HTMLFormElement).reset();
-    } else {
-      setMessage('Failed to submit.');
+    try {
+      const formData = new FormData(e.currentTarget);
+      const result = await submitData(formData);
+      
+      if (result.success) {
+        setMessage('Submitted successfully!');
+        (e.target as HTMLFormElement).reset();
+      } else {
+        setMessage(result.message || 'Failed to submit.');
+      }
+    } catch (error) {
+      console.error(error);
+      setMessage('Failed to submit. An unexpected error occurred.');
+    } finally {
+      setLoading(false);
     }
-    
-    setLoading(false);
   }
 
   return (
